@@ -38,9 +38,36 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+  const expr = "00101010100000000010001011101000101110100000111111**********00001011110000111111000010111000101110100000111010";
+    // разбил строку на массив строк
+  const newStr = expr.match(/.{1,10}/g);
+
+  // в каждой строке получил индекс единицы (массив цифр)
+  let nmbStr = newStr.map(item => item.indexOf(1));
+
+  //  массив с массивами индексов единицы
+  let nmbStrArr = nmbStr.map(item => [nmbStr[item]]);
+
+  // сделал массив с массивами по 10 символов
+  let arrOfArr = newStr.map(item => item.split(""));
+
+  // console.log (arrOfArr);
+  let strSpl = arrOfArr.map(item => item.splice(nmbStrArr - 1));
+  console.log (strSpl);
 }
 
 module.exports = {
     decode
 }
+
+
+
+
+
+
+
+
+
+
+
+
